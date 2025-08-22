@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>DigitalSecure - New Transfer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+
+      .progress-pill {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 16px;
+        border-radius: 9999px;
+        font-weight: 500;
+      }
+
+      .progress-pill.active {
+        background: linear-gradient(to right, #001BB7, #0046FF);
+        color: white;
+      }
+
+      .progress-pill.inactive {
+        background-color: #F3F4F6;
+        color: #6B7280;
+      }
+
+      .input-chip {
+        background-color: #FFFFFF;
+        border: 1px solid #D1D5DB;
+        border-radius: 8px;
+        padding: 12px 16px;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .input-chip:hover {
+        border-color: #9CA3AF;
+      }
+
+      .input-chip:focus-within {
+        border-color: #0046FF;
+        box-shadow: 0 0 0 3px rgba(0, 70, 255, 0.2);
+        outline: none;
+      }
+
+      .input-field {
+        border: none;
+        outline: none;
+        width: 100%;
+        background-color: transparent;
+      }
+
+      .btn-primary {
+        background: linear-gradient(to right, #001BB7, #0046FF);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .btn-primary:hover {
+        box-shadow: 0 4px 15px rgba(0, 70, 255, 0.3);
+      }
+
+      .btn-secondary {
+        background-color: #E5E7EB;
+        color: #4B5563;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .btn-secondary:hover {
+        background-color: #D1D5DB;
+      }
+
+      .limit-bar {
+        height: 8px;
+        background-color: #E5E7EB;
+        border-radius: 9999px;
+        overflow: hidden;
+      }
+
+      .limit-progress {
+        height: 100%;
+        background-color: #0046FF;
+        border-radius: 9999px;
+        transition: width 0.5s ease-in-out;
+      }
+
+      .limit-progress.near-limit {
+        background-color: #FF8040;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <div class="min-h-screen flex flex-col">
+      <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <h1 class="text-xl font-semibold text-gray-800">Digital Bank</h1>
+        </div>
+      </header>
+      <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">New transfer</h2>
+          <div class="flex items-center justify-center space-x-2 sm:space-x-4 mb-10">
+            <div class="flex items-center">
+              <div class="progress-pill inactive"> From/To </div>
+            </div>
+            <div class="w-12 h-px bg-gray-300 hidden sm:block"></div>
+            <div class="flex items-center">
+              <div class="progress-pill active"> Details </div>
+            </div>
+            <div class="w-12 h-px bg-gray-300 hidden sm:block"></div>
+            <div class="flex items-center">
+              <div class="progress-pill inactive"> Review </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 bg-white p-6 sm:p-8 rounded-xl shadow-md space-y-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2" for="from-account">From account</label>
+                  <div class="input-chip flex items-center">
+                    <span class="material-icons text-gray-500 mr-3">account_balance</span>
+                    <input class="input-field cursor-not-allowed" id="from-account" readonly="" type="text" value="Checking **** 1234 — ₹8,420.12" />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2" for="to-account">To</label>
+                  <div class="input-chip flex items-center">
+                    <span class="material-icons text-gray-500 mr-3">account_balance_wallet</span>
+                    <input class="input-field cursor-not-allowed" id="to-account" readonly="" type="text" value="Savings **** 9910" />
+                  </div>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2" for="amount">Amount</label>
+                  <div class="input-chip flex items-center">
+                    <span class="material-icons text-gray-500 mr-3">paid</span>
+                    <input class="input-field font-semibold" id="amount" type="text" value="₹ 500.00" />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2" for="description">Description</label>
+                  <div class="input-chip">
+                    <input class="input-field" id="description" placeholder="Monthly transfer" type="text" />
+                  </div>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2" for="schedule">Schedule</label>
+                  <div class="input-chip flex items-center">
+                    <span class="material-icons text-gray-500 mr-3">schedule</span>
+                    <input class="input-field" id="schedule" type="text" value="Now" />
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2" for="delivery-date">Delivery date</label>
+                  <div class="input-chip flex items-center">
+                    <span class="material-icons text-gray-500 mr-3">calendar_today</span>
+                    <input class="input-field" id="delivery-date" type="date" value="2025-08-10" />
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-100/70 p-4 rounded-lg">
+                <div class="limit-bar mb-2">
+                  <div class="limit-progress" style="width: 25%;"></div>
+                </div>
+                <div class="flex justify-between items-center text-sm">
+                  <div class="text-gray-600">
+                    <span class="font-medium">Daily limit:</span>
+                    <span class="font-semibold text-gray-800">₹5,000</span>
+                  </div>
+                  <div class="text-gray-600">
+                    <span class="font-medium">Used:</span>
+                    <span class="font-semibold text-gray-800">₹1,250</span>
+                  </div>
+                  <div class="text-gray-600">
+                    <span class="font-medium">Remaining:</span>
+                    <span class="font-semibold text-green-600">₹3,750</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-between items-center pt-4">
+                <button class="btn-secondary" type="button">Back</button>
+                <button class="btn-primary" type="button">Review</button>
+              </div>
+            </div>
+            <div class="space-y-8">
+              <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Summary</h3>
+                <div class="space-y-3 text-sm">
+                  <div class="flex justify-between">
+                    <span class="text-gray-600">From:</span>
+                    <span class="font-semibold text-gray-800">Checking **** 1234</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-600">To:</span>
+                    <span class="font-semibold text-gray-800">Savings **** 9910</span>
+                  </div>
+                  <div class="flex justify-between items-center pt-2 mt-2 border-t border-gray-200">
+                    <span class="text-gray-600">Amount:</span>
+                    <span class="text-lg font-bold text-gray-900">₹500.00</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-gray-600">Fee:</span>
+                    <span class="font-semibold text-gray-800">₹0.00</span>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Security tips</h3>
+                <div class="flex flex-wrap gap-2">
+                  <div class="flex items-center bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">
+                    <span class="material-icons text-sm mr-1.5">info</span> We never ask for your password
+                  </div>
+                  <div class="flex items-center bg-blue-100 text-blue-800 text-xs font-medium px-3 py-1 rounded-full">
+                    <span class="material-icons text-sm mr-1.5">info</span> Use idempotency keys on confirm
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

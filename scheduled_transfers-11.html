@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Scheduled Transfers</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #F5F7FA;
+      }
+
+      .gradient-btn {
+        background-image: linear-gradient(to right, #001BB7, #0046FF);
+      }
+
+      .gradient-btn:hover {
+        opacity: 0.9;
+      }
+
+      .status-pill {
+        padding: 4px 12px;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .status-active {
+        background-color: rgba(52, 199, 89, 0.1);
+        color: #34C759;
+      }
+
+      .status-paused {
+        background-color: rgba(255, 149, 0, 0.1);
+        color: #FF9500;
+      }
+
+      .status-cancelled {
+        background-color: rgba(255, 59, 48, 0.1);
+        color: #FF3B30;
+      }
+
+      .action-icon {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .action-icon .tooltip {
+        visibility: hidden;
+        width: max-content;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 10px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .action-icon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body class="p-4 sm:p-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+          <div>
+            <h1 class="text-2xl font-bold text-gray-800">Scheduled Transfers</h1>
+            <p class="text-gray-500 mt-1">Manage your automated transfers</p>
+          </div>
+          <button class="gradient-btn text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 mt-4 sm:mt-0"> New Scheduled Transfer </button>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+        <div class="hidden md:block">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="p-6 text-sm font-medium text-gray-500">Next Run</th>
+                <th class="p-6 text-sm font-medium text-gray-500">From</th>
+                <th class="p-6 text-sm font-medium text-gray-500">To</th>
+                <th class="p-6 text-sm font-medium text-gray-500">Amount</th>
+                <th class="p-6 text-sm font-medium text-gray-500">Frequency</th>
+                <th class="p-6 text-sm font-medium text-gray-500">Status</th>
+                <th class="p-6 text-sm font-medium text-gray-500 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-gray-200 bg-white hover:bg-gray-50 transition-colors duration-200">
+                <td class="p-6 font-semibold text-gray-800">2025-09-01</td>
+                <td class="p-6 text-gray-600">Checking ••••1234</td>
+                <td class="p-6 text-gray-600">Savings ••••9910</td>
+                <td class="p-6 font-bold text-lg" style="color: #FF8040;">₹500.00</td>
+                <td class="p-6 text-gray-600 flex items-center">
+                  <span class="material-icons text-gray-400 mr-2">calendar_today</span> Monthly
+                </td>
+                <td class="p-6">
+                  <span class="status-pill status-active flex items-center">
+                    <span class="material-icons text-sm mr-1" style="color: #34C759;">fiber_manual_record</span> Active </span>
+                </td>
+                <td class="p-6 text-right">
+                  <div class="flex justify-end items-center space-x-2">
+                    <div class="action-icon">
+                      <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                        <span class="material-icons">pause</span>
+                      </button>
+                      <span class="tooltip">Pause</span>
+                    </div>
+                    <div class="action-icon">
+                      <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                        <span class="material-icons">edit</span>
+                      </button>
+                      <span class="tooltip">Edit</span>
+                    </div>
+                    <div class="action-icon">
+                      <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                        <span class="material-icons">delete</span>
+                      </button>
+                      <span class="tooltip">Cancel</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr class="border-b border-gray-200 bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                <td class="p-6 font-semibold text-gray-800">2025-09-15</td>
+                <td class="p-6 text-gray-600">Savings ••••9910</td>
+                <td class="p-6 text-gray-600">Investment ••••4567</td>
+                <td class="p-6 font-bold text-lg" style="color: #FF8040;">₹1,200.00</td>
+                <td class="p-6 text-gray-600 flex items-center">
+                  <span class="material-icons text-gray-400 mr-2">calendar_today</span> Bi-weekly
+                </td>
+                <td class="p-6">
+                  <span class="status-pill status-paused flex items-center">
+                    <span class="material-icons text-sm mr-1" style="color: #FF9500;">fiber_manual_record</span> Paused </span>
+                </td>
+                <td class="p-6 text-right">
+                  <div class="flex justify-end items-center space-x-2">
+                    <div class="action-icon">
+                      <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                        <span class="material-icons">play_arrow</span>
+                      </button>
+                      <span class="tooltip">Resume</span>
+                    </div>
+                    <div class="action-icon">
+                      <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                        <span class="material-icons">edit</span>
+                      </button>
+                      <span class="tooltip">Edit</span>
+                    </div>
+                    <div class="action-icon">
+                      <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                        <span class="material-icons">delete</span>
+                      </button>
+                      <span class="tooltip">Cancel</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr class="bg-white hover:bg-gray-50 transition-colors duration-200">
+                <td class="p-6 font-semibold text-gray-800">2025-10-01</td>
+                <td class="p-6 text-gray-600">Checking ••••1234</td>
+                <td class="p-6 text-gray-600">Credit Card ••••8888</td>
+                <td class="p-6 font-bold text-lg" style="color: #FF8040;">₹250.00</td>
+                <td class="p-6 text-gray-600 flex items-center">
+                  <span class="material-icons text-gray-400 mr-2">calendar_today</span> Monthly
+                </td>
+                <td class="p-6">
+                  <span class="status-pill status-active flex items-center">
+                    <span class="material-icons text-sm mr-1" style="color: #34C759;">fiber_manual_record</span> Active </span>
+                </td>
+                <td class="p-6 text-right">
+                  <div class="flex justify-end items-center space-x-2">
+                    <div class="action-icon">
+                      <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                        <span class="material-icons">pause</span>
+                      </button>
+                      <span class="tooltip">Pause</span>
+                    </div>
+                    <div class="action-icon">
+                      <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                        <span class="material-icons">edit</span>
+                      </button>
+                      <span class="tooltip">Edit</span>
+                    </div>
+                    <div class="action-icon">
+                      <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                        <span class="material-icons">delete</span>
+                      </button>
+                      <span class="tooltip">Cancel</span>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="md:hidden space-y-4 p-4">
+          <div class="bg-white rounded-lg border border-gray-200 p-4 space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-sm text-gray-500">Next Run</p>
+                <p class="font-semibold text-gray-800">2025-09-01</p>
+              </div>
+              <span class="status-pill status-active flex items-center">
+                <span class="material-icons text-sm mr-1" style="color: #34C759;">fiber_manual_record</span> Active </span>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">From</p>
+              <p class="text-gray-700">Checking ••••1234</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">To</p>
+              <p class="text-gray-700">Savings ••••9910</p>
+            </div>
+            <div class="flex justify-between items-center border-t border-gray-100 pt-4 mt-4">
+              <div class="font-bold text-xl" style="color: #FF8040;">₹500.00</div>
+              <div class="flex items-center space-x-2">
+                <div class="action-icon">
+                  <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                    <span class="material-icons">pause</span>
+                  </button>
+                  <span class="tooltip">Pause</span>
+                </div>
+                <div class="action-icon">
+                  <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                    <span class="material-icons">edit</span>
+                  </button>
+                  <span class="tooltip">Edit</span>
+                </div>
+                <div class="action-icon">
+                  <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                    <span class="material-icons">delete</span>
+                  </button>
+                  <span class="tooltip">Cancel</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white rounded-lg border border-gray-200 p-4 space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <p class="text-sm text-gray-500">Next Run</p>
+                <p class="font-semibold text-gray-800">2025-09-15</p>
+              </div>
+              <span class="status-pill status-paused flex items-center">
+                <span class="material-icons text-sm mr-1" style="color: #FF9500;">fiber_manual_record</span> Paused </span>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">From</p>
+              <p class="text-gray-700">Savings ••••9910</p>
+            </div>
+            <div>
+              <p class="text-sm text-gray-500">To</p>
+              <p class="text-gray-700">Investment ••••4567</p>
+            </div>
+            <div class="flex justify-between items-center border-t border-gray-100 pt-4 mt-4">
+              <div class="font-bold text-xl" style="color: #FF8040;">₹1,200.00</div>
+              <div class="flex items-center space-x-2">
+                <div class="action-icon">
+                  <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                    <span class="material-icons">play_arrow</span>
+                  </button>
+                  <span class="tooltip">Resume</span>
+                </div>
+                <div class="action-icon">
+                  <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                    <span class="material-icons">edit</span>
+                  </button>
+                  <span class="tooltip">Edit</span>
+                </div>
+                <div class="action-icon">
+                  <button class="p-2 rounded-full hover:bg-gray-200 text-gray-500 hover:text-gray-700 transition-colors duration-200">
+                    <span class="material-icons">delete</span>
+                  </button>
+                  <span class="tooltip">Cancel</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

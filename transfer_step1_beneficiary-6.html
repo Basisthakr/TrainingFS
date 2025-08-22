@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>DigitalSecure - New Transfer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+
+      .progress-step {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 32px;
+        border-radius: 9999px;
+        font-weight: 500;
+      }
+
+      .progress-step-active {
+        background-image: linear-gradient(to right, #001BB7, #0046FF);
+        color: white;
+      }
+
+      .progress-step-inactive {
+        background-color: #F3F4F6;
+        color: #6B7280;
+      }
+
+      .progress-line {
+        height: 2px;
+        width: 60px;
+        background-color: #E5E7EB;
+      }
+
+      .form-card {
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      }
+
+      .input-chip {
+        border: 1px solid #D1D5DB;
+        border-radius: 8px;
+        padding: 12px 16px;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .input-chip:hover {
+        border-color: #0046FF;
+      }
+
+      .input-chip:focus-within {
+        border-color: #0046FF;
+        box-shadow: 0 0 0 2px rgba(0, 70, 255, 0.2);
+      }
+
+      .input-chip .material-symbols-outlined {
+        color: #6B7280;
+      }
+
+      .pill-toggle {
+        cursor: pointer;
+        padding: 10px 20px;
+        border-radius: 9999px;
+        transition: all 0.2s ease-in-out;
+        border: 1px solid transparent;
+      }
+
+      .pill-toggle-active {
+        background-color: #E0E7FF;
+        color: #0046FF;
+        font-weight: 600;
+      }
+
+      .pill-toggle-inactive {
+        background-color: #F9FAFB;
+        color: #4B5563;
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .btn-primary {
+        background-image: linear-gradient(to right, #001BB7, #0046FF);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        opacity: 0.9;
+      }
+
+      .btn-secondary {
+        background-color: #E5E7EB;
+        color: #4B5563;
+      }
+
+      .btn-secondary:hover {
+        background-color: #D1D5DB;
+      }
+
+      .error-highlight {
+        border-color: #FF8040 !important;
+        color: #FF8040;
+      }
+
+      .error-text {
+        color: #FF8040;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-900">
+    <div class="min-h-screen flex flex-col">
+      <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+          <h1 class="text-xl font-semibold text-gray-900">DigitalSecure</h1>
+        </div>
+      </header>
+      <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-2xl font-bold mb-4">New Transfer</h2>
+          <div class="flex items-center justify-center mb-12">
+            <div class="flex items-center">
+              <div class="progress-step progress-step-active">1. From/To</div>
+              <div class="progress-line"></div>
+              <div class="progress-step progress-step-inactive">2. Details</div>
+              <div class="progress-line"></div>
+              <div class="progress-step progress-step-inactive">3. Review</div>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 bg-white rounded-xl p-8 form-card">
+              <form>
+                <div class="space-y-8">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2" for="from-account">From account</label>
+                    <div class="relative input-chip">
+                      <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2">account_balance_wallet</span>
+                      <input class="w-full pl-10 border-none focus:ring-0 bg-transparent" id="from-account" readonly="" type="text" value="Checking **** 1234 — ₹8,420.12" />
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-3">To</label>
+                    <div class="flex items-center space-x-2 bg-gray-100 p-1 rounded-full w-max mb-6">
+                      <div class="pill-toggle pill-toggle-active" id="existing-beneficiary-toggle">Existing beneficiary</div>
+                      <div class="pill-toggle pill-toggle-inactive" id="new-account-toggle">New external account</div>
+                    </div>
+                    <div id="existing-beneficiary-section">
+                      <label class="block text-sm font-medium text-gray-700 mb-2" for="choose-beneficiary">Choose beneficiary</label>
+                      <div class="relative input-chip">
+                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2">person</span>
+                        <select class="w-full pl-10 border-none focus:ring-0 bg-transparent appearance-none" id="choose-beneficiary">
+                          <option>John Doe</option>
+                          <option>Jane Smith</option>
+                          <option>Peter Jones</option>
+                        </select>
+                        <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
+                      </div>
+                    </div>
+                    <div class="hidden" id="new-account-section">
+                      <div class="space-y-6">
+                        <div>
+                          <label class="block text-sm font-medium text-gray-700 mb-2" for="account-name">Account Name</label>
+                          <div class="relative input-chip">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2">person</span>
+                            <input class="w-full pl-10 border-none focus:ring-0 bg-transparent" id="account-name" placeholder="e.g., John Doe" type="text" />
+                          </div>
+                        </div>
+                        <div>
+                          <label class="block text-sm font-medium text-gray-700 mb-2" for="account-number">Account Number</label>
+                          <div class="relative input-chip">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2">account_balance</span>
+                            <input class="w-full pl-10 border-none focus:ring-0 bg-transparent" id="account-number" placeholder="Enter account number" type="text" />
+                          </div>
+                        </div>
+                        <div>
+                          <label class="block text-sm font-medium text-gray-700 mb-2" for="ifsc-swift">IFSC / SWIFT</label>
+                          <div class="relative input-chip">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2">pin</span>
+                            <input class="w-full pl-10 border-none focus:ring-0 bg-transparent" id="ifsc-swift" placeholder="Enter IFSC or SWIFT code" type="text" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-12 flex justify-between items-center">
+                  <button class="btn btn-secondary" type="button">Back</button>
+                  <button class="btn btn-primary" type="submit">Next</button>
+                </div>
+              </form>
+            </div>
+            <div class="bg-white rounded-xl p-8 form-card h-min" id="beneficiary-details-card">
+              <h3 class="text-lg font-semibold mb-6">Selected Beneficiary</h3>
+              <div class="space-y-5">
+                <div>
+                  <p class="text-sm text-gray-500">Name</p>
+                  <p class="font-semibold text-gray-800">John Doe</p>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500">Account</p>
+                  <p class="font-semibold text-gray-800">**** 9910</p>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500">Bank</p>
+                  <p class="font-semibold text-gray-800">DB Main</p>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-500">Last used</p>
+                  <p class="font-semibold text-gray-800">2023-08-01</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script>
+      const existingBeneficiaryToggle = document.getElementById('existing-beneficiary-toggle');
+      const newAccountToggle = document.getElementById('new-account-toggle');
+      const existingBeneficiarySection = document.getElementById('existing-beneficiary-section');
+      const newAccountSection = document.getElementById('new-account-section');
+      const beneficiaryDetailsCard = document.getElementById('beneficiary-details-card');
+      existingBeneficiaryToggle.addEventListener('click', () => {
+        existingBeneficiaryToggle.classList.add('pill-toggle-active');
+        existingBeneficiaryToggle.classList.remove('pill-toggle-inactive');
+        newAccountToggle.classList.add('pill-toggle-inactive');
+        newAccountToggle.classList.remove('pill-toggle-active');
+        existingBeneficiarySection.style.display = 'block';
+        newAccountSection.style.display = 'none';
+        beneficiaryDetailsCard.style.display = 'block';
+      });
+      newAccountToggle.addEventListener('click', () => {
+        newAccountToggle.classList.add('pill-toggle-active');
+        newAccountToggle.classList.remove('pill-toggle-inactive');
+        existingBeneficiaryToggle.classList.add('pill-toggle-inactive');
+        existingBeneficiaryToggle.classList.remove('pill-toggle-active');
+        existingBeneficiarySection.style.display = 'none';
+        newAccountSection.style.display = 'block';
+        beneficiaryDetailsCard.style.display = 'none';
+      });
+    </script>
+  </body>
+</html>

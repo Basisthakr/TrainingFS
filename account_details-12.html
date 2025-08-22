@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Digital Bank - Account Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #F5F7FA;
+      }
+
+      .gradient-button {
+        background-image: linear-gradient(to right, #001BB7, #0046FF);
+        transition: all 0.3s ease;
+      }
+
+      .gradient-button:hover {
+        box-shadow: 0 4px 15px 0 rgba(0, 70, 255, 0.3);
+      }
+
+      .pill-tab {
+        transition: all 0.3s ease;
+      }
+
+      .pill-tab.active {
+        background-color: white;
+        color: #0046FF;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .input-chip {
+        background-color: white;
+        border: 1px solid #E0E7FF;
+        transition: all 0.3s ease;
+      }
+
+      .input-chip:hover {
+        border-color: #0046FF;
+        box-shadow: 0 0 0 2px rgba(0, 70, 255, 0.1);
+      }
+
+      .table-row-alt:nth-child(even) {
+        background-color: #FFFFFF;
+      }
+
+      .table-row-alt:nth-child(odd) {
+        background-color: #F9FAFB;
+      }
+
+      .orange-text {
+        color: #FF8040;
+      }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    <div class="min-h-screen">
+      <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-center h-16">
+            <div class="flex items-center">
+              <span class="text-xl font-bold text-gray-900">Digital Bank</span>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h1 class="text-2xl font-semibold text-gray-900 mb-6">Account details</h1>
+        <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+          <div class="flex flex-col md:flex-row justify-between items-start">
+            <div>
+              <h2 class="text-xl font-semibold text-gray-900">Checking •••• 1234</h2>
+              <div class="text-sm text-gray-500 mt-2">
+                <p>Status: <span class="text-green-500 font-medium">Active</span> • Opened: 2023-05-20 </p>
+                <p>Branch: Main (001)</p>
+              </div>
+            </div>
+            <div class="mt-4 md:mt-0 text-left md:text-right">
+              <p class="text-sm text-gray-500">Available balance</p>
+              <p class="text-3xl font-bold text-gray-900">₹84,200.12</p>
+              <button class="gradient-button text-white font-semibold py-2 px-6 rounded-lg mt-4 shadow-sm"> New transfer </button>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-100 rounded-full p-1 inline-flex mb-6">
+          <button class="pill-tab text-gray-500 py-2 px-6 rounded-full">Overview</button>
+          <button class="pill-tab active py-2 px-6 rounded-full">Transactions</button>
+          <button class="pill-tab text-gray-500 py-2 px-6 rounded-full">Statements</button>
+        </div>
+        <div class="bg-white rounded-xl shadow-md">
+          <div class="p-6">
+            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+              <div class="relative flex-1">
+                <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">calendar_today</span>
+                <select class="input-chip w-full pl-10 pr-4 py-2.5 rounded-lg appearance-none focus:outline-none">
+                  <option>Last 30 days</option>
+                  <option>Last 60 days</option>
+                  <option>Last 90 days</option>
+                </select>
+                <span class="material-icons absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
+              </div>
+              <div class="relative flex-1">
+                <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">receipt_long</span>
+                <select class="input-chip w-full pl-10 pr-4 py-2.5 rounded-lg appearance-none focus:outline-none">
+                  <option>Type: All</option>
+                  <option>Credit</option>
+                  <option>Debit</option>
+                </select>
+                <span class="material-icons absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
+              </div>
+              <div class="relative flex-1">
+                <span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">sync</span>
+                <select class="input-chip w-full pl-10 pr-4 py-2.5 rounded-lg appearance-none focus:outline-none">
+                  <option>Status: All</option>
+                  <option>Completed</option>
+                  <option>Pending</option>
+                  <option>Failed</option>
+                </select>
+                <span class="material-icons absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
+              </div>
+              <button class="bg-blue-50 hover:bg-blue-100 text-blue-600 font-semibold py-2.5 px-6 rounded-lg flex items-center justify-center transition">
+                <span class="material-icons mr-2">download</span> CSV </button>
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left text-gray-500">
+              <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 font-medium" scope="col">Date</th>
+                  <th class="px-6 py-3 font-medium" scope="col">Description</th>
+                  <th class="px-6 py-3 font-medium" scope="col">Type</th>
+                  <th class="px-6 py-3 font-medium" scope="col">Status</th>
+                  <th class="px-6 py-3 font-medium" scope="col">Reference</th>
+                  <th class="px-6 py-3 font-medium text-right" scope="col">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-row-alt border-b">
+                  <td class="px-6 py-4 whitespace-nowrap">2025-08-10</td>
+                  <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Transfer to Savings</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Transfer</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Completed</td>
+                  <td class="px-6 py-4 whitespace-nowrap">TRX-22481</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right font-semibold">-₹500.00</td>
+                </tr>
+                <tr class="table-row-alt border-b">
+                  <td class="px-6 py-4 whitespace-nowrap">2025-08-09</td>
+                  <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Salary</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Credit</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Completed</td>
+                  <td class="px-6 py-4 whitespace-nowrap">TRX-22462</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right font-semibold text-green-600">+₹3,200.00</td>
+                </tr>
+                <tr class="table-row-alt border-b">
+                  <td class="px-6 py-4 whitespace-nowrap">2025-08-08</td>
+                  <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Grocery</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Debit</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Completed</td>
+                  <td class="px-6 py-4 whitespace-nowrap">TRX-22422</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right font-semibold">-₹42.16</td>
+                </tr>
+                <tr class="table-row-alt border-b">
+                  <td class="px-6 py-4 whitespace-nowrap">2025-08-07</td>
+                  <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Electricity</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Debit</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Completed</td>
+                  <td class="px-6 py-4 whitespace-nowrap">TRX-22390</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right font-semibold">-₹88.12</td>
+                </tr>
+                <tr class="table-row-alt border-b">
+                  <td class="px-6 py-4 whitespace-nowrap">2025-08-06</td>
+                  <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">ATM Withdrawal</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Debit</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Completed</td>
+                  <td class="px-6 py-4 whitespace-nowrap">TRX-22358</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right font-semibold">-₹60.00</td>
+                </tr>
+                <tr class="table-row-alt">
+                  <td class="px-6 py-4 whitespace-nowrap">2025-08-05</td>
+                  <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Mobile Recharge</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Debit</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Completed</td>
+                  <td class="px-6 py-4 whitespace-nowrap">TRX-22330</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right font-semibold">-₹12.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>DigitalSecure - Transfer Confirmation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+
+      .gradient-bg {
+        background-image: linear-gradient(to right, #001BB7, #0046FF);
+      }
+
+      .gradient-button {
+        background-image: linear-gradient(to right, #001BB7, #0046FF);
+        transition: all 0.3s ease;
+      }
+
+      .gradient-button:hover {
+        box-shadow: 0 4px 15px 0 rgba(0, 70, 255, 0.4);
+      }
+
+      .ghost-button {
+        transition: all 0.3s ease;
+      }
+
+      .ghost-button:hover {
+        background-color: rgba(0, 70, 255, 0.05);
+        color: #0046FF;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 flex items-center justify-center min-h-screen p-4">
+    <div class="w-full max-w-md mx-auto">
+      <header class="py-4 px-6 fixed top-0 left-0 w-full bg-white border-b border-gray-200">
+        <h1 class="text-xl font-semibold text-gray-800">Digital Bank</h1>
+      </header>
+      <main class="mt-20">
+        <div class="bg-white rounded-xl shadow-md p-6 sm:p-10">
+          <div class="flex flex-col items-center text-center">
+            <div class="w-24 h-24 rounded-full gradient-bg flex items-center justify-center mb-6">
+              <span class="material-icons text-white text-6xl">check</span>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900">Transfer Submitted</h2>
+            <p class="text-gray-500 mt-2">Your transfer was successfully created and is processing.</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 mt-8">
+            <div class="p-4 sm:p-6 space-y-4">
+              <div class="flex justify-between items-center py-3">
+                <span class="text-gray-500 text-sm">Reference</span>
+                <span class="font-medium text-gray-800">TRX-22481</span>
+              </div>
+              <div class="bg-gray-50 rounded-md flex justify-between items-center py-3 px-4 -mx-4 sm:-mx-6">
+                <span class="text-gray-500 text-sm">From</span>
+                <span class="font-medium text-gray-800">Checking •••• 1234</span>
+              </div>
+              <div class="flex justify-between items-center py-3">
+                <span class="text-gray-500 text-sm">To</span>
+                <span class="font-medium text-gray-800">Savings •••• 8910</span>
+              </div>
+              <div class="bg-gray-50 rounded-md flex justify-between items-center py-3 px-4 -mx-4 sm:-mx-6">
+                <span class="text-gray-500 text-sm">Amount</span>
+                <span class="font-bold text-lg" style="color: #FF8040;">₹500.00</span>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 space-y-4">
+            <button class="w-full gradient-button text-white font-semibold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400"> View Account </button>
+            <button class="w-full ghost-button text-gray-600 font-semibold py-3 px-4 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-300"> New Transfer </button>
+          </div>
+          <div class="text-center mt-6">
+            <a class="text-sm text-gray-500 underline hover:text-gray-800 transition-colors" href="#">Download receipt (PDF)</a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
